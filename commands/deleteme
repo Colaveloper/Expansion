@@ -1,0 +1,36 @@
+from dotenv import load_dotenv
+import os
+import lightbulb
+from PyDictionary import PyDictionary
+
+dictionary=PyDictionary()
+
+load_dotenv('.env')
+
+bot = lightbulb.BotApp(
+    token= os.getenv('BOT_TOKEN'), 
+    default_enabled_guilds=(958052503658835988)
+)
+
+bot.load_extensions_from('./extensions')
+
+# @bot.command
+# @lightbulb.command('group', 'this is a group')
+# @lightbulb.implements(lightbulb.SlashCommandGroup) # Group of subcommands.
+# async def my_group(ctx):
+#     pass
+
+# @my_group.child
+# @lightbulb.command('subcommand', 'this is a subcommand')
+# @lightbulb.implements(lightbulb.SlashSubCommand) # subcommand 1
+# async def subcommand(ctx):
+#     await ctx.respond("Subcommand!")
+
+@bot.command
+@lightbulb.option('word', 'word to define', type=str)
+@lightbulb.command('define', 'defines a word in english')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def define(ctx):
+    await ctx.respond(dictionary.meaning(ctx.options.word))
+bot.run()
+

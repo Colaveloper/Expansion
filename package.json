@@ -1,0 +1,17 @@
+{
+  "name": "expansion",
+  "version": "1.0.0",
+  "description": "discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^1.0.1",
+    "discord.js": "^14.2.0",
+    "lodash": "^4.17.21",
+    "urban-dictionary": "^3.0.2"
+  }
+}
